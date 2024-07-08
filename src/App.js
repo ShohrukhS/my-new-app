@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Board from './Board';
 import './App.css';
 
 function App() {
+  const [gameKey, setGameKey] = useState(0);
+
+  const resetGame = () => {
+    setGameKey(prevKey => prevKey + 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="game">
+      <div className="game-board">
+        <Board key={gameKey} resetGame={resetGame} />
+      </div>
     </div>
   );
 }
